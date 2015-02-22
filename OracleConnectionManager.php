@@ -12,10 +12,10 @@
 	**/
 	function getRequestType($array_key){
 		$emptyArray = array();
-		if(array_key_exists($_GET, $array_key)){
+		if(array_key_exists($array_key, $_GET)){
 			return $_GET;
 		}
-		else if(array_key_exists($_POST, $array_key)){
+		else if(array_key_exists($array_key, $_POST)){
 			return $_POST;
 		}
 		else{
@@ -29,9 +29,9 @@
 	function openDatabaseConnection(){
 		$request = getRequestType('user-name');
 
-		$user_name = (array_key_exists($request, 'user-name')) ? $request['user-name'] : "";
-		$password =  (array_key_exists($request, 'password')) ? $request['password'] : "";
-		$connectionString = (array_key_exists($request, 'connection-string')) ? $request['connection-string'] : "";
+		$user_name = (array_key_exists('user-name', $request)) ? $request['user-name'] : "";
+		$password =  (array_key_exists('password', $request)) ? $request['password'] : "";
+		$connectionString = (array_key_exists('connection-string', $request)) ? $request['connection-string'] : "";
 
 		$conn = oci_connect($user_name, $password, $connectionString);
 		return $conn;

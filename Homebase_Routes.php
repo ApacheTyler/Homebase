@@ -47,7 +47,7 @@ class HomebaseApi extends RestfulAPI_Abs
     		return user_table_get();
   	   }
        else if ($this->method == 'PUT'){
-         echo('put request');
+        return user_table_put();
        }
   	   else {
       		return "Error";

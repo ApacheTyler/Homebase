@@ -11,7 +11,7 @@
 			sur_id int,
 			CONSTRAINT pk_api_test_table PRIMARY KEY (sur_id);
 		");
-		return $results
+		return $results;
 	}
 
 	function parse_table_name_results($result){

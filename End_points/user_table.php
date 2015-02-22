@@ -8,8 +8,10 @@
 
 	function user_table_put(){
 		$results = executeQuery("CREATE TABLE API_TEST_TABLE
-			sur_id int,
-			CONSTRAINT pk_api_test_table PRIMARY KEY (sur_id);
+			(
+				sur_id VARCHAR2(20),
+				CONSTRAINT pk_api_test_table PRIMARY KEY (sur_id);
+			);
 		");
 		return $results;
 	}

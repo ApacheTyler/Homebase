@@ -11,6 +11,7 @@
 	*  Accept GET and POST requests
 	**/
 	function getRequestType($array_key){
+		$emptyArray = array();
 		if(array_key_exists($_GET, $array_key)){
 			return $_GET;
 		}
@@ -18,7 +19,7 @@
 			return $_POST;
 		}
 		else{
-			return new array();
+			return $emptyArray;
 		}
 	}
 

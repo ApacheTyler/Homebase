@@ -41,25 +41,28 @@ class HomebaseApi extends RestfulAPI_Abs
             return "Only accepts GET requests";
         }
      }
-     
+
      protected function user_table(){
-       if ($this->method == 'GET') {
+       if ($this->method == 'GET' || $this->method=="POST") {
     		return user_table_get();
-  	   } 
+  	   }
+       else if ($this->method == 'PUT'){
+         echo('put request');
+       }
   	   else {
       		return "Error";
   	   }
      }
-     
+
      protected function user_table_columns(){
-       if ($this->method == 'GET') {
+       if ($this->method == 'GET' || $this->method == 'POST') {
     		return user_table_column_get($_GET);
   	   }
   	   else {
       		return "Error";
   	   }
      }
-     
+
      protected function user_schema(){
        if ($this->method == 'POST' || $this->method=='GET') {
        		$res = array();
@@ -76,6 +79,6 @@ class HomebaseApi extends RestfulAPI_Abs
       		return "Error";
   	   }
      }
-     
+
  }
 ?>

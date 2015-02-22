@@ -11,7 +11,7 @@
 			(
 				sur_id VARCHAR2(20),
 				CONSTRAINT pk_api_test_table PRIMARY KEY (sur_id)
-			);
+			)
 		");
 		return $results;
 	}

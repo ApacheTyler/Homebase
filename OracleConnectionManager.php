@@ -7,25 +7,30 @@
 	 ini_set('date.timezone','America/New_York');
 	 error_reporting (E_ALL|E_STRICT);
 
+	/**
+	*  Accept GET and POST requests
+	**/
 	function getRequestType($array_key){
 		if(array_key_exists($_GET, $array_key)){
-			return $_GET
+			return $_GET;
 		}
 		else if(array_key_exists($_POST, $array_key)){
-			return $_POST
+			return $_POST;
 		}
 		else{
 			return new array();
 		}
 	}
 
+	/**
+	* Create a oracle connection and return it
+	**/
 	function openDatabaseConnection(){
 		$request = getRequestType('user-name');
-		if(array_key_exists($_GET['user-name'])){
-			$user_name = $_GET['user-name'];
-			$password = $_GET['password'];
-			$connectionString = $_GET['connection-string'];
-		}
+
+		$user_name = (array_key_exists($request, 'user-name')) ? $request['user-name'] : "";
+		$password =  (array_key_exists($request, 'password')) ? $request['password'] : "";
+		$connectionString = (array_key_exists($request, 'connection-string')) ? $request['connection-string'] : "";
 
 		$conn = oci_connect($user_name, $password, $connectionString);
 		return $conn;

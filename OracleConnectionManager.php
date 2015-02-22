@@ -55,7 +55,11 @@
 
 		$preparedStatement = oci_parse($conn, $SQLstatement);//Prepare statement
 
-		oci_execute($preparedStatement);//execute preparedStatement
+		$success = oci_execute($preparedStatement);//execute preparedStatement
+
+		if(!$success){
+			return array("error" => "Failed to execute: " . $SQLstatement);
+		}
 
 		$arrayOfDataReturned = array();//Array containing all data returned from result set
 		$currentRecord;//temp user for each result set

@@ -6,13 +6,20 @@
   		return $results;
 	}
 
-	function user_table_put(){
-		$results = executeQuery("CREATE TABLE API_TEST_TABLE
-			(
-				sur_id VARCHAR2(20),
-				CONSTRAINT pk_api_test_table PRIMARY KEY (sur_id)
-			)
-		");
+	function user_table_put($tableData){
+		try{
+			$results = executeQuery("CREATE TABLE API_TEST_TABLE
+				(
+					sur_id VARCHAR2(20),
+					CONSTRAINT pk_api_test_table PRIMARY KEY (sur_id)
+				)
+			");
+		}
+		catch(Exception $e){
+			$results = array();
+			$results['error'] = $e->getMessage();
+		}
+
 		return $results;
 	}
 

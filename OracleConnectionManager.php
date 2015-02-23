@@ -58,7 +58,7 @@
 		$success = oci_execute($preparedStatement);//execute preparedStatement
 
 		if(!$success){
-			return array("error" => "Failed to execute: " . $SQLstatement);
+			return array('error' => oci_error($preparedStatement));
 		}
 
 		$arrayOfDataReturned = array();//Array containing all data returned from result set

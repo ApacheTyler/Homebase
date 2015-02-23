@@ -13,6 +13,8 @@ class HomebaseApi extends RestfulAPI_Abs
     ////$APIKey = new Models\APIKey();
     ////$User = new Models\User();
 
+    const REQUEST_NOT_SUPPORTED = "Endpoint does not support request type";
+
     public function __construct($request, $origin) {
         parent::__construct($request);
 
@@ -50,7 +52,7 @@ class HomebaseApi extends RestfulAPI_Abs
         return user_table_put();
        }
   	   else {
-      		return "Error";
+      		return array('error' => self::REQUEST_NOT_SUPPORTED);
   	   }
      }
 
@@ -59,7 +61,7 @@ class HomebaseApi extends RestfulAPI_Abs
     		return user_table_column_get($_GET);
   	   }
   	   else {
-      		return "Error";
+      		return array('error' => self::REQUEST_NOT_SUPPORTED);
   	   }
      }
 
@@ -76,7 +78,7 @@ class HomebaseApi extends RestfulAPI_Abs
     		return $res;
   	   }
   	   else {
-      		return "Error";
+         return array('error' => self::REQUEST_NOT_SUPPORTED);
   	   }
      }
 

@@ -54,7 +54,7 @@ class HomebaseApi extends RestfulAPI_Abs
     		return user_table_get();
   	   }
        else if ($this->method == 'PUT'){
-        return user_table_put();
+        return user_table_put('request from ipad app');
        }
   	   else {
       		return array('error' => self::REQUEST_NOT_SUPPORTED);

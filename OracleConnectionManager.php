@@ -10,13 +10,17 @@
 	/**
 	*  Accept GET and POST requests
 	**/
-	function getRequestType($array_key){
+	function getRequestType(){
 		$emptyArray = array();
-		if(array_key_exists($array_key, $_GET)){
+		if($_SERVER['REQUEST_METHOD'] == 'GET'){
 			return $_GET;
 		}
-		else if(array_key_exists($array_key, $_POST)){
+		else if($_SERVER['REQUEST_METHOD'] == 'POST')){
 			return $_POST;
+		}
+		else if($_SERVER['REQUEST_METHOD'] == 'PUT'){
+			parse_str(file_get_contents("php://input"),$put_vars);
+			return $put_vars
 		}
 		else{
 			return $emptyArray;

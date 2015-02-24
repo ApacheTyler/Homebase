@@ -1,5 +1,11 @@
 <?php
 
+/**
+* Needs to be converted to OO paradigm.
+* Functions starting with user_schema are public methods
+* Functions starting with _ are private methods.
+**/
+
 	function user_schema_get(){
 		$table_array = user_table_get();
 	}
@@ -12,7 +18,15 @@
 						AND cons.constraint_name = cols.constraint_name
 						AND cons.owner = cols.owner
 				ORDER BY cols.table_name, cols.position");
-		return $results;
+		return _parse_primary_key_column_names($results);
+	}
+
+	function _parse_primary_key_column_names($results){
+		$primary_keys = array();
+		foreach($results as $result){
+			$primary_keys[] = $result['COLUMN_NAME'];
+		}
+		return $primary_keys;
 	}
 
 ?>

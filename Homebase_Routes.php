@@ -44,6 +44,10 @@ class HomebaseApi extends RestfulAPI_Abs
         }
      }
 
+     /**
+     * End point for creating, reading, updating, and deleting
+     * tables in a user schema
+     **/
      protected function user_table(){
        if ($this->method == 'GET' || $this->method=="POST") {
     		return user_table_get();
@@ -56,6 +60,10 @@ class HomebaseApi extends RestfulAPI_Abs
   	   }
      }
 
+     /**
+     * End point for creating, reading, updating, and deleting
+     * tables in a user schema
+     **/
      protected function user_table_columns(){
        if ($this->method == 'GET' || $this->method == 'POST') {
     		return user_table_column_get($_GET);
@@ -65,6 +73,9 @@ class HomebaseApi extends RestfulAPI_Abs
   	   }
      }
 
+     /**
+     * End point for obtaining structure of user schema
+     **/
      protected function user_schema(){
        if ($this->method == 'POST' || $this->method=='GET') {
        		$res = array();
@@ -72,6 +83,7 @@ class HomebaseApi extends RestfulAPI_Abs
     		$tables = user_table_get();
     		foreach($tables as $table){
     			$table['TABLE_COLS'] = user_table_column_get($table['TABLE_NAME']);
+          $table['TABLE_PRIMARY_KEY'] = user_schema_get_table_primary_key($table['TABLE_NAME']);
     			$user_schema[] = $table;
     		}
     		$res['USER_SCHEMA'] = $user_schema;

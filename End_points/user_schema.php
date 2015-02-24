@@ -12,7 +12,6 @@
 						AND cons.constraint_name = cols.constraint_name
 						AND cons.owner = cols.owner
 				ORDER BY cols.table_name, cols.position");
-		print_r($results);
 		return $results;
 	}
 

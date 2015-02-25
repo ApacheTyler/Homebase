@@ -15,12 +15,12 @@
 		if($_SERVER['REQUEST_METHOD'] == 'GET'){
 			return $_GET;
 		}
-		else if($_SERVER['REQUEST_METHOD'] == 'POST')){
+		else if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			return $_POST;
 		}
 		else if($_SERVER['REQUEST_METHOD'] == 'PUT'){
 			parse_str(file_get_contents("php://input"),$put_vars);
-			return $put_vars
+			return $put_vars;
 		}
 		else{
 			return $emptyArray;

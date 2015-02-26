@@ -60,14 +60,17 @@ class HomebaseApi extends RestfulAPI_Abs
       		return array('error' => self::REQUEST_NOT_SUPPORTED);
   	   }
      }
-
      /**
-     * End point for creating, reading, updating, and deleting
-     * tables in a user schema
+     * !!Rucs does not support put or delete requests, this method simulates it!!
+     * !! GET requests are considered PUT requests !!
+     * !! POST requests are considered DELETE requests!!
      **/
-     protected function user_table_create(){
+     protected function user_table_put_delete(){
        if ($this->method == 'GET') {
          return array('error' => self::REQUEST_NOT_SUPPORTED);
+       }
+       if ($this->method == 'POST') {
+         return user_table_delete("request from ipad app");
        }
        else {
           return array('error' => self::REQUEST_NOT_SUPPORTED);

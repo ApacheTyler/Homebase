@@ -16,6 +16,15 @@
 		return $results;
 	}
 
+	function user_table_delete($tableData){
+		$results = executeQuery("DROP TABLE API_TEST_TABLE");
+		return $results
+	}
+
+	function user_table_put($tableData){
+		//TODO: Implement
+	}
+
 	function parse_table_name_results($result){
 		return $result['TABLE_NAME'];
 	}

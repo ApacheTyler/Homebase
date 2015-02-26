@@ -99,8 +99,10 @@ class HomebaseApi extends RestfulAPI_Abs
        		$user_schema = array();
     		$tables = user_table_get();
     		foreach($tables as $table){
+          $table_name = $table['TABLE_NAME'];
     			$table['TABLE_COLS'] = user_table_column_get($table['TABLE_NAME']);
-          $table['TABLE_PRIMARY_KEY'] = user_schema_get_table_primary_key($table['TABLE_NAME']);
+          $table['TABLE_PRIMARY_KEY'] = user_schema_get_table_primary_key($table_name);
+          $table['TABLE_FOREIGN_KEY'] = user_schema_get_table_foreign_key($table_name);
     			$user_schema[] = $table;
     		}
     		$res['USER_SCHEMA'] = $user_schema;

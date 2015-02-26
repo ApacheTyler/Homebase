@@ -7,7 +7,7 @@
 	 ini_set('date.timezone','America/New_York');
 	 error_reporting (E_ALL|E_STRICT);
 
-	$conn = openDatabaseConnection();
+	$GLOBALS['oracle_connection'] = openDatabaseConnection();
 
 	/**
 	*  Accept GET and POST requests
@@ -57,7 +57,7 @@
 	 */
 	function executeQuery($SQLstatement, $parserFunction = "defaultFunction"){
 
-		//$conn = openDatabaseConnection();
+		$conn = $GLOBALS['oracle-connection'];
 
 		$preparedStatement = oci_parse($conn, $SQLstatement);//Prepare statement
 
@@ -80,7 +80,6 @@
 
 		oci_free_statement($preparedStatement);
 
-		oci_close($conn);
 		return $arrayOfDataReturned;
 
 	}

@@ -106,6 +106,7 @@ class HomebaseApi extends RestfulAPI_Abs
     			$user_schema[] = $table;
     		}
     		$res['USER_SCHEMA'] = $user_schema;
+        $conn = $GLOBALS['oracle-connection'];
         oci_close($conn);
     		return $res;
   	   }

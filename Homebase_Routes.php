@@ -53,12 +53,22 @@ class HomebaseApi extends RestfulAPI_Abs
        if ($this->method == 'GET') {
     		return user_table_get();
   	   }
-       else if ($this->method == 'POST'){
-        return user_table_put('request from ipad app');
-       }
   	   else {
       		return array('error' => self::REQUEST_NOT_SUPPORTED);
   	   }
+     }
+
+     /**
+     * End point for creating, reading, updating, and deleting
+     * tables in a user schema
+     **/
+     protected function user_table_create(){
+       if ($this->method == 'POST') {
+        return user_table_get('request from ipad app');
+       }
+       else {
+          return array('error' => self::REQUEST_NOT_SUPPORTED);
+       }
      }
 
      /**

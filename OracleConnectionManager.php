@@ -57,7 +57,7 @@
 	 */
 	function executeQuery($SQLstatement, $parserFunction = "defaultFunction"){
 
-		$conn = $GLOBALS['oracle-connection'];
+		$conn = $GLOBALS['oracle_connection'];
 
 		$preparedStatement = oci_parse($conn, $SQLstatement);//Prepare statement
 

@@ -50,10 +50,10 @@ class HomebaseApi extends RestfulAPI_Abs
      * tables in a user schema
      **/
      protected function user_table(){
-       if ($this->method == 'GET' || $this->method=="POST") {
+       if ($this->method == 'GET') {
     		return user_table_get();
   	   }
-       else if ($this->method == 'PUT'){
+       else if ($this->method == 'POST'){
         return user_table_put('request from ipad app');
        }
   	   else {

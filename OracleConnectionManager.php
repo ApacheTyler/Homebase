@@ -7,6 +7,8 @@
 	 ini_set('date.timezone','America/New_York');
 	 error_reporting (E_ALL|E_STRICT);
 
+	$conn = openDatabaseConnection();
+
 	/**
 	*  Accept GET and POST requests
 	**/
@@ -55,7 +57,7 @@
 	 */
 	function executeQuery($SQLstatement, $parserFunction = "defaultFunction"){
 
-		$conn = openDatabaseConnection();
+		//$conn = openDatabaseConnection();
 
 		$preparedStatement = oci_parse($conn, $SQLstatement);//Prepare statement
 

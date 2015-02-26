@@ -18,7 +18,7 @@
 
 	function user_table_delete($tableData){
 		$results = executeQuery("DROP TABLE API_TEST_TABLE");
-		return $results
+		return $results;
 	}
 
 	function user_table_put($tableData){

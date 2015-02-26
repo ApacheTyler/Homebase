@@ -6,7 +6,7 @@
   		return $results;
 	}
 
-	function user_table_put($tableData){
+	function user_table_post($tableData){
 		$results = executeQuery("CREATE TABLE API_TEST_TABLE
 			(
 				sur_id VARCHAR2(20),

@@ -44,7 +44,7 @@
 	function user_schema_get_table_triggers($table_name){
 		$results = executeQuery("SELECT trigger_name, trigger_type, triggering_event, status, trigger_body
 			 															FROM user_triggers
-															WHERE table_name = $table_name");
+															WHERE table_name = '$table_name'");
 	}
 
 

@@ -53,7 +53,6 @@
 		foreach($results as $result){
 			$result['TRIGGER_BODY'] = utf8_encode($result['TRIGGER_BODY']);
 		}
-		return $primary_keys;
 	}
 
 

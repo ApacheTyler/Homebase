@@ -16,7 +16,7 @@ try {
     $API = new HomebaseApi($_REQUEST['request'], $_SERVER['HTTP_ORIGIN']);
     echo $API->processAPI();
     $conn = $GLOBALS['oracle_connection'];
-    oci_close($conn);
+    oci_close($GLOBALS['oracle_connection']);
 } catch (Exception $e) {
     echo json_encode(Array('error' => $e->getMessage()));
 }

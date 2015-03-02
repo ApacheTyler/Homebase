@@ -70,7 +70,7 @@ class HomebaseApi extends RestfulAPI_Abs
          return array('error' => self::REQUEST_NOT_SUPPORTED);
        }
        if ($this->method == 'POST') {//Surrogate DELETE request
-         if(!array_key_exists('table-name,'$_POST)){
+         if(!array_key_exists('table-name',$_POST)){
            return array('error' => "Missing parameter table-name");
          }
          else{

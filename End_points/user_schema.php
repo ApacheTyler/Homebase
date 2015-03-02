@@ -45,6 +45,7 @@
 		$results = executeQuery("SELECT trigger_name, trigger_type, triggering_event, status, trigger_body
 			 															FROM user_triggers
 															WHERE table_name = '$table_name'");
+		return $results;
 	}
 
 

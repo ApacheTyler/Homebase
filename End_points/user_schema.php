@@ -45,7 +45,15 @@
 		$results = executeQuery("SELECT trigger_name, trigger_type, triggering_event, status, trigger_body
 			 															FROM user_triggers
 															WHERE table_name = '$table_name'");
-		return $results;
+		return _parse_trigger_body($results);
+	}
+
+	function _parse_trigger_body($results){
+		$trigger_bodys = array();
+		foreach($results as $result){
+			$result['TRIGGER_BODY'] = utf8_encode($result['TRIGGER_BODY']);
+		}
+		return $primary_keys;
 	}
 
 

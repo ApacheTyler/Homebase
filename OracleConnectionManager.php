@@ -7,8 +7,6 @@
 	 ini_set('date.timezone','America/New_York');
 	 error_reporting (E_ALL|E_STRICT);
 
-	$GLOBALS['oracle_connection'] = openDatabaseConnection();
-
 	/**
 	*  Accept GET and POST requests
 	**/

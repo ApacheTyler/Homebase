@@ -12,8 +12,11 @@ if (!array_key_exists('HTTP_ORIGIN', $_SERVER)) {
 }
 
 try {
+    $GLOBALS['oracle_connection'] = openDatabaseConnection();
     $API = new HomebaseApi($_REQUEST['request'], $_SERVER['HTTP_ORIGIN']);
     echo $API->processAPI();
+    $conn = $GLOBALS['oracle_connection'];
+    oci_close($conn);
 } catch (Exception $e) {
     echo json_encode(Array('error' => $e->getMessage()));
 }

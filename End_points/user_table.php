@@ -17,7 +17,7 @@
 	}
 
 	function user_table_delete($tableData){
-		$results = executeQuery("DROP TABLE API_TEST_TABLE");
+		$results = executeQuery("DROP TABLE $tableData");
 		return $results;
 	}
 

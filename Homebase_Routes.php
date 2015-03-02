@@ -66,11 +66,16 @@ class HomebaseApi extends RestfulAPI_Abs
      * !! POST requests are considered DELETE requests!!
      **/
      protected function user_table_put_delete(){
-       if ($this->method == 'GET') {
+       if ($this->method == 'GET') {//Surrogate PUT request
          return array('error' => self::REQUEST_NOT_SUPPORTED);
        }
-       if ($this->method == 'POST') {
-         return user_table_delete("request from ipad app");
+       if ($this->method == 'POST') {//Surrogate DELETE request
+         if(!array_key_exists('table-name,'$_POST)){
+           return array('error' => "Missing parameter table-name");
+         }
+         else{
+           return user_table_delete($_POST['table-name']);
+         }
        }
        else {
           return array('error' => self::REQUEST_NOT_SUPPORTED);

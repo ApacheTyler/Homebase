@@ -9,7 +9,7 @@
 	function user_table_post($tableData){
 
 		$dev = '{
-		"name": "table_1",
+		"name": "API_TEST_TABLE",
 		"deferrable": "true",
 		"cols": [
 								{
@@ -59,16 +59,13 @@
 
 		$table_data = (json_decode($dev, true));
 
-		print_r(_create_table($table_data['name']) . "(
+		$create_statement = (_create_table($table_data['name']) . "(
 			" . _create_columns($table_data['cols']) . "
 )");
 
-		$results = executeQuery("CREATE TABLE API_TEST_TABLE
-			(
-				sur_id VARCHAR2(20),
-				CONSTRAINT pk_api_test_table PRIMARY KEY (sur_id)
-			)
-		");
+		print_r($create_statement);
+
+		$results = executeQuery($create_statement);
 		return $results;
 	}
 

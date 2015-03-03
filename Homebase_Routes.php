@@ -55,7 +55,6 @@ class HomebaseApi extends RestfulAPI_Abs
   	   }
        if ($this->method == 'POST') {
         user_table_post('request from ipad app');//Create table
-        return array('success' => 'Table created');
        }
   	   else {
       		return array('error' => self::REQUEST_NOT_SUPPORTED);

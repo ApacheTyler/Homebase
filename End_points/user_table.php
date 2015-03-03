@@ -82,9 +82,9 @@
 	function _create_columns($columns_array){
 		$columns_statement = "";
 		foreach($columns_array as $column){
-			$columns_statment = $columns_statment . $column['name'] . " " . $column['type'];
+			$columns_statement = $columns_statement . $column['name'] . " " . $column['type'];
 			if($column['size']){
-				$column_statement = $column_statement . "(" . $column['size'] .")";
+				$columns_statement = $columns_statement . "(" . $column['size'] .")";
 			}
 			$columns_statement = $columns_statement . " " . $column['notNull'] . "
 			";

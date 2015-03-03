@@ -7,6 +7,9 @@
 	}
 
 	function user_table_post($tableData){
+		print_r(_create_table("API_TEST_TABLE") . "(
+			" . "
+			)");
 		$results = executeQuery("CREATE TABLE API_TEST_TABLE
 			(
 				sur_id VARCHAR2(20),
@@ -14,6 +17,39 @@
 			)
 		");
 		return $results;
+	}
+
+	/**
+	* Generates create table statement
+	**/
+	function _create_table($table_name){
+		return "CREATE TABLE $table_name ";
+	}
+
+	/**
+	* Generates columns
+	**/
+	function _create_columns($columns_array){
+		foreach($columns_array as $column){
+
+		}
+		return $columns_statement;
+	}
+
+	function _primary_keys($primary_keys){
+		$primary_key_statement = "";
+		foreach($primary_key as $key){
+
+		}
+		return $primary_key_statement;
+	}
+
+	function _foreign_keys($foreign_keys){
+		$foreign_key_statement = "";
+		foreach($foreign_keys as $key){
+
+		}
+		return $foreign_keys;
 	}
 
 	function user_table_delete($tableData){

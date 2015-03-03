@@ -54,7 +54,7 @@
 									]
     }';
 
-		print_r(json_decode($dev));
+		print_r(json_decode($dev, true));
 
 // 		print_r(_create_table("API_TEST_TABLE") . "(
 // 			" . "

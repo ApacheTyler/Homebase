@@ -8,51 +8,51 @@
 
 	function user_table_post($tableData){
 
-		$dev = "{
-		name: 'table_1',
-		deferrable: 'true',
-		cols: [
+		$dev = '{
+		"name": "table_1",
+		"deferrable": "true",
+		"cols": [
 								{
-										name: 'col_1'
-										type: 'VARCHAR2'
-										size: 20
-										notNull: false
+										"name": "col_1",
+										"type": "VARCHAR2",
+										"size": 20,
+										"notNull": false
+								},
+								{
+										"name": "col_2",
+										"type": "NUMBER",
+										"size": 20,
+										"notNull": true
+								},
+								{
+										"name": "col_1",
+										"type": "int",
+										"size": null,
+										"notNull": false
 								}
-								,{
-										name: 'col_2'
-										type: 'NUMBER'
-										size: 20
-										notNull: true
-								}
-								,{
-										name: 'col_1'
-										type: 'int'
-										size: null
-										notNull: false
-								}
-							],
-		primaryKey: {
-																constraintName: 'pk_table_1',
-																cols: [
-																					'col1',
-																					'col2'
-																				]
-														},
-		foreignKey:  [
+					],
+		"primaryKey": {
+																"constraintName": "pk_table_1",
+																"cols": [
+																					"col1",
+																					"col2"
+																			]
+								},
+		"foreignKey":  [
 																{
-																		constrainName: 'fk_table_1_col_2'
-																		tableCol: 'col_2'
-																		refTable: 'table_3'
-																		refCol: 'ref_col_1'
+																		"constrainName": "fk_table_1_col_2",
+																		"tableCol": "col_2",
+																		"refTable": "table_3",
+																		"refCol": "ref_col_1"
+																},
+																{
+																		"constrainName": "fk_table_1_col_3",
+																		"tableCol": "col_3",
+																		"refTable": "table_6",
+																		"refCol": "ref_col_99"
 																}
-																,{
-																		constrainName: 'fk_table_1_col_3'
-																		tableCol: 'col_3'
-																		refTable: 'table_6'
-																		refCol: 'ref_col_99'
-																}
-													]
-    }";
+									]
+    }';
 
 		print_r(json_decode($dev));
 

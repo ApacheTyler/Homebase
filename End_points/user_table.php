@@ -25,7 +25,7 @@
 										"notNull": true
 								},
 								{
-										"name": "col_1",
+										"name": "col_3",
 										"type": "int",
 										"size": null,
 										"notNull": false
@@ -57,7 +57,7 @@
 		$table_data = (json_decode($dev, true));
 
 		print_r(_create_table($table_data['name']) . "(
-			" . "
+			" . _create_columns($table_data['cols']) . "
 )");
 
 		$results = executeQuery("CREATE TABLE API_TEST_TABLE
@@ -82,7 +82,12 @@
 	function _create_columns($columns_array){
 		$columns_statement = "";
 		foreach($columns_array as $column){
-
+			$columns_statment = $columns_statment . $column['name'] . " " . $column['type'];
+			if($column['size']){
+				$column_statement = $column_statement . "(" . $column['size'] .")";
+			}
+			$columns_statement = $columns_statement . " " . $column['notNull'] . "
+			";
 		}
 		return $columns_statement;
 	}

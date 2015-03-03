@@ -54,9 +54,9 @@
 									]
     }';
 
-		//print_r(json_decode($dev, true));
+		$table_data = (json_decode($dev, true));
 
-		print_r(_create_table($dev['name']) . "(
+		print_r(_create_table($table_data['name']) . "(
 			" . "
 )");
 

@@ -54,11 +54,11 @@
 									]
     }';
 
-		print_r(json_decode($dev, true));
+		//print_r(json_decode($dev, true));
 
-// 		print_r(_create_table("API_TEST_TABLE") . "(
-// 			" . "
-// )");
+		print_r(_create_table($dev['name']) . "(
+			" . "
+)");
 
 		$results = executeQuery("CREATE TABLE API_TEST_TABLE
 			(

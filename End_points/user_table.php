@@ -120,7 +120,7 @@
 
 	function _unique_constraint($column){
 		if($column['unique']){
-			return "UNQIUE";
+			return "UNIQUE";
 		}
 		else{
 			return "";

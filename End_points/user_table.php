@@ -16,19 +16,22 @@
 										"name": "col_1",
 										"type": "VARCHAR2",
 										"size": 20,
-										"notNull": false
+										"notNull": false,
+										"unique" : true
 								},
 								{
 										"name": "col_2",
 										"type": "NUMBER",
 										"size": 20,
-										"notNull": true
+										"notNull": true,
+										"unique": false
 								},
 								{
 										"name": "col_3",
 										"type": "int",
 										"size": null,
-										"notNull": false
+										"notNull": false,
+										"unique": true
 								}
 					],
 		"primaryKey": {
@@ -86,7 +89,7 @@
 			if($column['size']){
 				$columns_statement = $columns_statement . "(" . $column['size'] .")";
 			}
-			$columns_statement = $columns_statement . " " . $column['notNull'] . "
+			$columns_statement = $columns_statement . " " . _not_null_constraint($column) . " " . _unique_constraint($column) . ",
 			";
 		}
 		return $columns_statement;
@@ -106,6 +109,24 @@
 
 		}
 		return $foreign_keys;
+	}
+
+	function _not_null_constraint($column){
+		if($column['notNull']){
+			return "NOT NULL";
+		}
+		else{
+			return "";
+		}
+	}
+
+	function _unique_constraint($column){
+		if($column['unique']){
+			return "UNQIUE";
+		}
+		else{
+			return "";
+		}
 	}
 
 	function user_table_delete($tableData){

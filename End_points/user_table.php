@@ -43,13 +43,13 @@
 								},
 		"foreignKey":  [
 																{
-																		"constrainName": "fk_table_1_col_2",
+																		"constraintName": "fk_table_1_col_2",
 																		"tableCol": "col_2",
 																		"refTable": "table_3",
 																		"refCol": "ref_col_1"
 																},
 																{
-																		"constrainName": "fk_table_1_col_3",
+																		"constraintName": "fk_table_1_col_3",
 																		"tableCol": "col_3",
 																		"refTable": "table_6",
 																		"refCol": "ref_col_99"
@@ -59,8 +59,12 @@
 
 		$table_data = (json_decode($dev, true));
 
+		$columns_and_constraints = _create_columns($table_data['cols']) . _primary_keys($table_data['primaryKey']);
+		$columns_and_constraints = rtrim($columns_and_constraints, ",
+		");
+
 		$create_statement = (_create_table($table_data['name']) . "(
-			" . _create_columns($table_data['cols']) . "
+			" . $columns_and_constraints . "
 )");
 
 		print_r($create_statement);
@@ -89,15 +93,18 @@
 			$columns_statement = $columns_statement . " " . _not_null_constraint($column) . " " . _unique_constraint($column) . ",
 			";
 		}
-		return rtrim($columns_statement, ",
-		");
+		return $columns_statement
 	}
 
 	function _primary_keys($primary_keys){
 		$primary_key_statement = "";
-		foreach($primary_key as $key){
-
+		$keys = "";
+		foreach($primary_key as $col){
+			$keys = $keys . $col . ",";
 		}
+		$keys = rtrim($keys, ",") . "
+		";
+		$primary_key_statement = "CONSTRAINT " . $primary_keys['constraintName'] . " PRIMARY KEY (" . $keys . ")";
 		return $primary_key_statement;
 	}
 

@@ -99,7 +99,7 @@
 	function _primary_keys($primary_keys){
 		$primary_key_statement = "";
 		$keys = "";
-		foreach($primary_key as $col){
+		foreach($primary_keys as $col){
 			$keys = $keys . $col . ",";
 		}
 		$keys = rtrim($keys, ",") . "

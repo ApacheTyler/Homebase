@@ -59,11 +59,16 @@
 
 		$table_data = (json_decode($dev, true));
 
+		$table_columns_and_constraints = _create_columns($table_data['cols']) . _primary_keys($table_data['primaryKey']);
+		$table_columns_and_constraints = rtrim($table_columns_and_constraints, ',');
+
+		print_r($table_columns_and_constraints);
+
 		$create_statement = (_create_table($table_data['name']) . "(
 			" . _create_columns($table_data['cols']) . "
 )");
 
-		print_r($create_statement);
+		//print_r($create_statement);
 
 		$results = executeQuery($create_statement);
 		return $results;

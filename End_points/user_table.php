@@ -37,8 +37,8 @@
 		"primaryKey": {
 																"constraintName": "pk_table_1",
 																"cols": [
-																					"col1",
-																					"col2"
+																					"col_1",
+																					"col_2"
 																			]
 								},
 		"foreignKey":  [

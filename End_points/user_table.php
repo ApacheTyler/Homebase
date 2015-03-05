@@ -51,7 +51,7 @@
 																{
 																		"constraintName": "fk_table_1_col_3",
 																		"tableCol": "col_3",
-																		"refTable": "table_6",
+																		"[refTable]": "table_6",
 																		"refCol": "ref_col_99"
 																}
 									]
@@ -109,8 +109,11 @@
 	function _foreign_keys($foreign_keys){
 		$foreign_key_statement = "";
 		foreach($foreign_keys as $key){
-
+			$foreign_key_statement = $foreign_key_statement . "CONSTRAINT " . $key['constraintName'] . " FOREIGN KEY (" . $key['tableCol'] . ") REFERENCES " . $key['refTable'] . "(" . $key['refCol'] . "),
+			";
 		}
+		$foreign_key_statement = rtrim($foreign_key_statement, ",
+		");
 		return $foreign_keys;
 	}
 

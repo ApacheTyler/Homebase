@@ -10,7 +10,6 @@
 
 		$dev = '{
 		"name": "API_TEST_TABLE",
-		"deferrable": "true",
 		"cols": [
 								{
 										"name": "col_1",
@@ -46,13 +45,15 @@
 																		"constraintName": "fk_table_1_col_2",
 																		"tableCol": "col_2",
 																		"refTable": "test_table_3",
-																		"refCol": "col_1"
+																		"refCol": "col_1",
+																		"deferrable": false
 																},
 																{
 																		"constraintName": "fk_table_1_col_3",
 																		"tableCol": "col_3",
 																		"refTable": "test_table_6",
-																		"refCol": "col_1"
+																		"refCol": "col_1",
+																		"deferrable": true
 																}
 									]
     }';
@@ -110,7 +111,11 @@
 	function _foreign_keys($foreign_keys){
 		$foreign_key_statement = "";
 		foreach($foreign_keys as $key){
-			$foreign_key_statement = $foreign_key_statement . "CONSTRAINT " . $key['constraintName'] . " FOREIGN KEY (" . $key['tableCol'] . ") REFERENCES " . $key['refTable'] . "(" . $key['refCol'] . "),
+			$deferrable = "";
+			if($key['deferrable']){
+				$deferrable = "DEFERRABLE INITIALLY DEFERRED";
+			}
+			$foreign_key_statement = $foreign_key_statement . "CONSTRAINT " . $key['constraintName'] . " FOREIGN KEY (" . $key['tableCol'] . ") REFERENCES " . $key['refTable'] . "(" . $key['refCol'] . ") " . $deferrable . ",
 			";
 		}
 		$foreign_key_statement = rtrim($foreign_key_statement, ",

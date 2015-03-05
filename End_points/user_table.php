@@ -103,6 +103,7 @@
 		foreach($primary_keys['cols'] as $col){
 			$keys = $keys . $col . ",";
 		}
+		rtrim($keys, ",");
 		$primary_key_statement = "CONSTRAINT " . $primary_keys['constraintName'] . " PRIMARY KEY (" . $keys . ")";
 		return $primary_key_statement;
 	}

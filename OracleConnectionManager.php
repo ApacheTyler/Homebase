@@ -2,10 +2,10 @@
 	/**
 	 * Use this page to confirm a successful connection to the database
 	 */
-	//  ini_set('display_errors',true);
-	//  ini_set('display_startup_errors',true);
-	//  ini_set('date.timezone','America/New_York');
-	//  error_reporting (E_ALL|E_STRICT);
+	 ini_set('display_errors',true);
+	 ini_set('display_startup_errors',true);
+	 ini_set('date.timezone','America/New_York');
+	 error_reporting (E_ALL|E_STRICT);
 
 	/**
 	*  Accept GET and POST requests

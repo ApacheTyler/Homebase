@@ -102,7 +102,8 @@
 			$keys = $keys . $col . ",";
 		}
 		$keys = rtrim($keys, ",");
-		$primary_key_statement = "CONSTRAINT " . $primary_keys['constraintName'] . " PRIMARY KEY (" . $keys . ")";
+		$primary_key_statement = "CONSTRAINT " . $primary_keys['constraintName'] . " PRIMARY KEY (" . $keys . "),
+		";
 		return $primary_key_statement;
 	}
 

@@ -45,14 +45,14 @@
 																{
 																		"constraintName": "fk_table_1_col_2",
 																		"tableCol": "col_2",
-																		"refTable": "table_3",
-																		"refCol": "ref_col_1"
+																		"refTable": "test_table_3",
+																		"refCol": "col_1"
 																},
 																{
 																		"constraintName": "fk_table_1_col_3",
 																		"tableCol": "col_3",
-																		"refTable": "table_6",
-																		"refCol": "ref_col_99"
+																		"refTable": "test_table_6",
+																		"refCol": "col_1"
 																}
 									]
     }';

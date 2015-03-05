@@ -100,7 +100,7 @@
 	function _primary_keys($primary_keys){
 		$primary_key_statement = "";
 		$keys = "";
-		foreach($primary_key as $col){
+		foreach($primary_keys['cols'] as $col){
 			$keys = $keys . $col . ",";
 		}
 		$primary_key_statement = "CONSTRAINT " . $primary_keys['constraintName'] . " PRIMARY KEY (" . $keys . ")";

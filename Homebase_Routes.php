@@ -121,14 +121,9 @@ class HomebaseApi extends RestfulAPI_Abs
 
      protected function test_tables(){
        if ($this->method == 'POST'){
-         executeQuery("
-            CREATE TABLE test_table_1 (
-             col_1 int
-            )
-            CREATE TABLE test_table_2 (
-             col_1 int
-            )
-         ");
+        for ($i = 1; $i <= 10; $i++) {
+          executeQuery("CREATE TABLE test_table_" . $i . " (col_1 int)");
+        }
        }
      }
 

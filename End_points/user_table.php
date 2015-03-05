@@ -114,7 +114,7 @@
 		}
 		$foreign_key_statement = rtrim($foreign_key_statement, ",
 		");
-		return $foreign_keys;
+		return $foreign_key_statement;
 	}
 
 	function _not_null_constraint($column){

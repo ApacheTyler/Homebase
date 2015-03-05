@@ -9,7 +9,7 @@
 	function user_table_post($tableData){
 
 		$dev = '{
-		"name": API_TEST_TABLE",
+		"name": "API_TEST_TABLE",
 		"deferrable": "true",
 		"cols": [
 								{
@@ -59,12 +59,8 @@
 
 		$table_data = (json_decode($dev, true));
 
-		$columns_and_constraints = _create_columns($table_data['cols']) . _primary_keys($table_data['primaryKey']);
-		$columns_and_constraints = rtrim($columns_and_constraints, ",
-		");
-		print_r('@#$@'. $columns_and_constraints . ' @#$@#$');
 		$create_statement = (_create_table($table_data['name']) . "(
-			" . $columns_and_constraints . "
+			" . _create_columns($table_data['cols']) . "
 )");
 
 		print_r($create_statement);
@@ -93,17 +89,15 @@
 			$columns_statement = $columns_statement . " " . _not_null_constraint($column) . " " . _unique_constraint($column) . ",
 			";
 		}
-		return $columns_statement;
+		return $columns_statement
 	}
 
 	function _primary_keys($primary_keys){
 		$primary_key_statement = "";
 		$keys = "";
-		foreach($primary_keys as $col){
+		foreach($primary_key as $col){
 			$keys = $keys . $col . ",";
 		}
-		$keys = rtrim($keys, ",") . "
-		";
 		$primary_key_statement = "CONSTRAINT " . $primary_keys['constraintName'] . " PRIMARY KEY (" . $keys . ")";
 		return $primary_key_statement;
 	}

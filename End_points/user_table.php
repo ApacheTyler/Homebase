@@ -62,13 +62,11 @@
 		$table_columns_and_constraints = _create_columns($table_data['cols']) . _primary_keys($table_data['primaryKey']);
 		$table_columns_and_constraints = rtrim($table_columns_and_constraints, ',');
 
-		print_r($table_columns_and_constraints);
-
 		$create_statement = (_create_table($table_data['name']) . "(
-			" . _create_columns($table_data['cols']) . "
+			" . $table_columns_and_constraints . "
 )");
 
-		//print_r($create_statement);
+		print_r($create_statement);
 
 		$results = executeQuery($create_statement);
 		return $results;
@@ -103,7 +101,7 @@
 		foreach($primary_keys['cols'] as $col){
 			$keys = $keys . $col . ",";
 		}
-		rtrim($keys, ",");
+		$keys = rtrim($keys, ",");
 		$primary_key_statement = "CONSTRAINT " . $primary_keys['constraintName'] . " PRIMARY KEY (" . $keys . ")";
 		return $primary_key_statement;
 	}

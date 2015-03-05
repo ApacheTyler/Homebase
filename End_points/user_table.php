@@ -89,7 +89,7 @@
 			$columns_statement = $columns_statement . " " . _not_null_constraint($column) . " " . _unique_constraint($column) . ",
 			";
 		}
-		return $columns_statement
+		return $columns_statement;
 	}
 
 	function _primary_keys($primary_keys){

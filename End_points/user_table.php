@@ -62,7 +62,7 @@
 		$columns_and_constraints = _create_columns($table_data['cols']) . _primary_keys($table_data['primaryKey']);
 		$columns_and_constraints = rtrim($columns_and_constraints, ",
 		");
-		print_r('@#$@'. $columns_and_constraints . ' @#$@#$')
+		print_r('@#$@'. $columns_and_constraints . ' @#$@#$');
 		$create_statement = (_create_table($table_data['name']) . "(
 			" . $columns_and_constraints . "
 )");

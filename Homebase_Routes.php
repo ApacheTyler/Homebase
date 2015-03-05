@@ -125,6 +125,9 @@ class HomebaseApi extends RestfulAPI_Abs
             CREATE TABLE test_table_1 (
              col_1 int
             )
+            CREATE TABLE test_table_2 (
+             col_1 int
+            )
          ");
        }
      }

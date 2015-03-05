@@ -51,7 +51,7 @@
 																{
 																		"constraintName": "fk_table_1_col_3",
 																		"tableCol": "col_3",
-																		"[refTable]": "table_6",
+																		"refTable": "table_6",
 																		"refCol": "ref_col_99"
 																}
 									]

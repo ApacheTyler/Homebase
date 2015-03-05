@@ -119,5 +119,39 @@ class HomebaseApi extends RestfulAPI_Abs
   	   }
      }
 
+     protected function test_tables(){
+       if ($this->method == 'GET'){
+         executeQuery("
+            CREATE TABLE test_table_1 (
+             col_1 int
+            )
+            CREATE TABLE test_table_2 (
+             col_1 int
+            )
+            CREATE TABLE test_table_3 (
+             col_1 int
+            )
+            CREATE TABLE test_table_4 (
+             col_1 int
+            )
+            CREATE TABLE test_table_5 (
+             col_1 int
+            )
+            CREATE TABLE test_table_6 (
+             col_1 int
+            )
+            CREATE TABLE test_table_7 (
+             col_1 int
+            )
+            CREATE TABLE test_table_8 (
+             col_1 int
+            )
+            CREATE TABLE test_table_9 (
+             col_1 int
+            )
+         ");
+       }
+     }
+
  }
 ?>

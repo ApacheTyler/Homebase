@@ -9,7 +9,7 @@
 	function user_table_post($tableData){
 
 		$dev = '{
-		"name": "API_TEST_TABLE",
+		"name": CHRIS_TEST_TABLE1",
 		"deferrable": "true",
 		"cols": [
 								{

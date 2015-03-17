@@ -59,9 +59,8 @@
 									]
     }';
 
-		if (get_magic_quotes_gpc())
-			$tabeData = stripslashes($tableData);
-			
+		$tabeData = stripslashes($tableData);
+
 		$table_data = (json_decode($tableData, true));
 
 		$table_columns_and_constraints = _create_columns($table_data['cols']) . _primary_keys($table_data['primaryKey']) . _foreign_keys($table_data['foreignKey']);

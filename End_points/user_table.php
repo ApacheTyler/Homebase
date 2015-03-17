@@ -89,8 +89,6 @@ if (get_magic_quotes_gpc()) {
 )");
 
 
-		print_r($create_statement);
-
 		$results = executeQuery($create_statement);
 		return $results;
 	}

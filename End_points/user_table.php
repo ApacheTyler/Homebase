@@ -67,6 +67,7 @@
 			" . $table_columns_and_constraints . "
 )");
 
+		print_r($tableData);
 		print_r($create_statement);
 
 		$results = executeQuery($create_statement);

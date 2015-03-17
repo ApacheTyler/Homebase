@@ -54,7 +54,7 @@ class HomebaseApi extends RestfulAPI_Abs
     		return user_table_get();
   	   }
        if ($this->method == 'POST') {
-        user_table_post($_POST['table_post']);//Create table
+        return user_table_post($_POST['table_post']);//Create table
        }
   	   else {
       		return array('error' => self::REQUEST_NOT_SUPPORTED);

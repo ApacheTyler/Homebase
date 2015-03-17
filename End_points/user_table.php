@@ -1,3 +1,4 @@
+magic_quotes_gpc = Off;
 <?php
 	function user_table_get(){
 		$results = executeQuery("SELECT table_name

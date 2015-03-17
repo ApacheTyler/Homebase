@@ -1,5 +1,4 @@
 <?php
-magic_quotes_gpc = Off;
 
 	function user_table_get(){
 		$results = executeQuery("SELECT table_name

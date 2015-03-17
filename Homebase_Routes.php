@@ -1,10 +1,10 @@
 <?php
 
-require_once 'Restful_Api_Abstract.php';
-require 'OracleConnectionManager.php';
-require 'End_points/user_table.php';
-require 'End_points/user_table_column.php';
-require 'End_points/user_schema.php';
+// require_once 'Restful_Api_Abstract.php';
+// require 'OracleConnectionManager.php';
+// require 'End_points/user_table.php';
+// require 'End_points/user_table_column.php';
+// require 'End_points/user_schema.php';
 class HomebaseApi extends RestfulAPI_Abs
 {
   //  protected $User;

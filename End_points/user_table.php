@@ -76,7 +76,7 @@ if (get_magic_quotes_gpc()) {
     }';
 
 		//$tabeData = stripslashes($tableData);
-		print_r($tableData);
+		//print_r($tableData);
 
 		$table_data = (json_decode($tableData, true));
 

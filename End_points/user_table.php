@@ -81,6 +81,7 @@ if (get_magic_quotes_gpc()) {
 		$table_data = (json_decode($tableData, true));
 
 		$table_columns_and_constraints = _create_columns($table_data['cols']) . _primary_keys($table_data['primaryKey']) . _foreign_keys($table_data['foreignKey']);
+		$table_columns_and_constraints = rtrim($table_columns_and_constraints);
 		$table_columns_and_constraints = rtrim($table_columns_and_constraints, ',');
 
 		$create_statement = (_create_table($table_data['name']) . "(

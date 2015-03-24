@@ -59,9 +59,6 @@
 	function executeQuery($SQLstatement, $parserFunction = "defaultFunction"){
 
 		$conn = $GLOBALS['oracle_connection'];
-		if(array_key_exists('error', $conn)){
-			return $conn;
-		}
 
 		$preparedStatement = oci_parse($conn, $SQLstatement);//Prepare statement
 

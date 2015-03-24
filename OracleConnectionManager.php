@@ -38,9 +38,7 @@
 		$connectionString = (array_key_exists('connection-string', $request)) ? $request['connection-string'] : "";
 
 		$conn = oci_connect($user_name, $password, $connectionString);
-		if(!$conn){
-			return array('error' => oci_error($conn));
-		}
+		
 		return $conn;
 	}
 

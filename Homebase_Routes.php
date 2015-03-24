@@ -99,9 +99,9 @@ class HomebaseApi extends RestfulAPI_Abs
      * End point for obtaining structure of user schema
      **/
      protected function user_schema(){
-       if(array_key_exists('error', $GLOBALS['oracle_connection'])){
-   			return $conn;
-   		}
+       if(!$GLOBALS['oracle_connection']){
+         oci_error($GLOBALS['oracle_connection']);
+       }
        if ($this->method == 'POST' || $this->method=='GET') {
        		$res = array();
        		$user_schema = array();

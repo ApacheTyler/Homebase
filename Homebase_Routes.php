@@ -100,7 +100,7 @@ class HomebaseApi extends RestfulAPI_Abs
      **/
      protected function user_schema(){
        if(!$GLOBALS['oracle_connection']){
-         return array('error' => oci_error($GLOBALS['oracle_connection']));
+         return array('error' => oci_error());
        }
        if ($this->method == 'POST' || $this->method=='GET') {
        		$res = array();

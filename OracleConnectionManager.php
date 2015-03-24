@@ -38,7 +38,7 @@
 		$connectionString = (array_key_exists('connection-string', $request)) ? $request['connection-string'] : "";
 
 		$conn = oci_connect($user_name, $password, $connectionString);
-		
+
 		return $conn;
 	}
 
@@ -57,6 +57,9 @@
 	function executeQuery($SQLstatement, $parserFunction = "defaultFunction"){
 
 		$conn = $GLOBALS['oracle_connection'];
+		if(!$conn){
+			return array('error' => oci_error());
+		}
 
 		$preparedStatement = oci_parse($conn, $SQLstatement);//Prepare statement
 

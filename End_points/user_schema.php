@@ -30,13 +30,10 @@
 	}
 
 	function user_schema_get_table_foreign_key($table_name){
-		$results = executeQuery("SELECT c.constraint_name, a.table_name, a.column_name, uc.table_name as reference_table, uc.column_name as reference_column, c.deferrable, c.DEFERRED, c.DELETE_RULE
+		$results = executeQuery("SELECT c.constraint_name, a.table_name, a.column_name, a.table_name as reference_table, a.column_name as reference_column, c.deferrable, c.DEFERRED, c.DELETE_RULE
                 FROM all_cons_columns a
                 JOIN all_constraints c ON a.owner = c.owner
                     AND a.constraint_name = c.constraint_name
-                JOIN all_constraints c_pk ON c.r_owner = c_pk.owner
-                       AND c.r_constraint_name = c_pk.constraint_name
-                JOIN user_cons_columns uc on uc.constraint_name = c.r_constraint_name
 								WHERE a.table_name = '$table_name'");
 		return $results;
 	}

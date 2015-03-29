@@ -6,8 +6,4 @@
   					  WHERE table_name = '$table_name'");
   	return $results;
 	}
-
-	function parse_column_name_results($result){
-		return $result['COLUMN_NAME'];
-	}
 ?>

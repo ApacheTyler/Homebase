@@ -93,6 +93,15 @@ if (get_magic_quotes_gpc()) {
 		return $results;
 	}
 
+	function user_table_delete($tableData){
+		$results = executeQuery("DROP TABLE $tableData");
+		return $results;
+	}
+
+	function user_table_put($tableData){
+		//TODO: Implement
+	}
+
 	/**
 	* Generates create table statement
 	**/
@@ -159,15 +168,6 @@ if (get_magic_quotes_gpc()) {
 		else{
 			return "";
 		}
-	}
-
-	function user_table_delete($tableData){
-		$results = executeQuery("DROP TABLE $tableData");
-		return $results;
-	}
-
-	function user_table_put($tableData){
-		//TODO: Implement
 	}
 
 	function parse_table_name_results($result){

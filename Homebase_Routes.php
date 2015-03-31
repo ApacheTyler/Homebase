@@ -5,6 +5,7 @@ require 'OracleConnectionManager.php';
 require 'End_points/user_table.php';
 require 'End_points/user_table_column.php';
 require 'End_points/user_schema.php';
+require 'End_points/user_alter_table_column.php'
 class HomebaseApi extends RestfulAPI_Abs
 {
   //  protected $User;

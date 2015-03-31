@@ -96,6 +96,18 @@ class HomebaseApi extends RestfulAPI_Abs
      }
 
      /**
+     * End point alerting atable
+     **/
+     protected function user_alter_table_column(){
+       if($this->method == 'POST'){
+         user_alter_table_column_post($_POST);
+       }
+       else {
+         return array('error' => self::REQUEST_NOT_SUPPORTED);
+       }
+     }
+
+     /**
      * End point for obtaining structure of user schema
      **/
      protected function user_schema(){

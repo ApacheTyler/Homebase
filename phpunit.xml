@@ -2,6 +2,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd"
          backupGlobals="true"
+         bootstrap="bootstrap-test-environment.php"
          backupStaticAttributes="false"
          cacheTokens="false"
          colors="true"
@@ -22,6 +23,8 @@
          timeoutForLargeTests="60"
          verbose="false">
   <testsuites>
-    <file>UnitTest.php</file>
+    <testsuite name="Connection Test">
+      <file>UnitTest.php</file>
+    </testsuite>
   </testsuites>
 </phpunit>

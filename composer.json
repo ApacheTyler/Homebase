@@ -1,0 +1,5 @@
+{
+    "require": {
+      "nightlinus/oracle-db": "dev-master"
+    }
+}

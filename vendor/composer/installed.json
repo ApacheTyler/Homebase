@@ -1,0 +1,37 @@
+[
+    {
+        "name": "nightlinus/oracle-db",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nightlinus/OracleDb.git",
+            "reference": "594db9d028ea395dfc22ece98df7f05f7be86271"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nightlinus/OracleDb/zipball/594db9d028ea395dfc22ece98df7f05f7be86271",
+            "reference": "594db9d028ea395dfc22ece98df7f05f7be86271",
+            "shasum": ""
+        },
+        "time": "2015-01-08 09:21:43",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "nightlinus\\OracleDb\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Mikhail.Ogarkov",
+                "email": "m.a.ogarkov@gmail.com"
+            }
+        ],
+        "description": "Wrapper around oci8 php extension to access Oracle Database"
+    }
+]

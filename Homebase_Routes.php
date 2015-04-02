@@ -109,6 +109,15 @@ class HomebaseApi extends RestfulAPI_Abs
        }
      }
 
+     protected function user_alter_table_column_put_delete(){
+       if($this->method == 'GET'){
+         user_alter_table_column_put($_GET);
+       }
+       else {
+         return array('error' => self::REQUEST_NOT_SUPPORTED);
+       }
+     }
+
      /**
      * End point for obtaining structure of user schema
      **/

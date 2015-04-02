@@ -34,4 +34,15 @@
     return executeQuery($edit_column_statement);
   }
 
+  /**
+  * Drop eisting column
+  **/
+  function user_alter_table_column_delete($req){
+    $table_name = array_key_exists('table-name', $req) ? $req['table-name'] : '';
+    $column_name = array_key_exists('column-name', $req) ? $req['column-name'] : '';
+    $drop_column_statement = "ALTER TABLE $table_name
+      DROP COLUMN $column_name";
+    return executeQuery($drop_column_statement);
+  }
+
 ?>

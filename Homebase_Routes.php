@@ -113,6 +113,9 @@ class HomebaseApi extends RestfulAPI_Abs
        if($this->method == 'GET'){
          user_alter_table_column_put($_GET);
        }
+       if($this->method == 'POST'){
+         user_alter_table_column_delete($_POST);
+       }
        else {
          return array('error' => self::REQUEST_NOT_SUPPORTED);
        }

@@ -6,6 +6,7 @@ require 'End_points/user_table.php';
 require 'End_points/user_table_column.php';
 require 'End_points/user_schema.php';
 require 'End_points/user_alter_table_column.php';
+require 'End_points/user_alter_table_constraint.php';
 
 class HomebaseApi extends RestfulAPI_Abs
 {
@@ -121,6 +122,24 @@ class HomebaseApi extends RestfulAPI_Abs
        }
      }
 
+     protected function user_alter_table_constraint(){
+       if($this->method == 'POST'){
+         return user_alter_table_constraint_post($_POST);
+       }
+       else {
+         return array('error' => self::REQUEST_NOT_SUPPORTED);
+       }
+     }
+
+     protected function user_alter_table_constraint_put_delete(){
+       if($this->method == 'POST'){
+         return user_alter_table_constraint_delete($_POST);
+       }
+       else {
+         return array('error' => self::REQUEST_NOT_SUPPORTED);
+       }
+     }
+
      /**
      * End point for obtaining structure of user schema
      **/
@@ -150,9 +169,58 @@ class HomebaseApi extends RestfulAPI_Abs
 
      protected function test_tables(){
        if ($this->method == 'POST'){
-        for ($i = 1; $i <= 10; $i++) {
-          executeQuery("CREATE TABLE test_table_" . $i . " (col_1 int)");
-        }
+          executeQuery("CREATE TABLE "TFREEMAN3"."BOWLERS"
+             (	"BNAME" VARCHAR2(40 BYTE),
+          	"HANDED" VARCHAR2(5 BYTE),
+          	"TEAM" VARCHAR2(40 BYTE),
+          	"PHONE" VARCHAR2(13 BYTE),
+          	 CONSTRAINT "PK_BOWLERS" PRIMARY KEY ("BNAME")
+            USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS
+            STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+            PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+            TABLESPACE "USERS"  ENABLE,
+          	 CONSTRAINT "UK_PHONE" UNIQUE ("PHONE")
+            USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS
+            STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+            PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+            TABLESPACE "USERS"  ENABLE
+             ) SEGMENT CREATION IMMEDIATE
+            PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+            STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+            PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+            TABLESPACE "USERS" ");
+          executeQuery("  CREATE TABLE "TFREEMAN3"."TOURNAMENTS"
+             (	"TNAME" VARCHAR2(80 BYTE),
+          	"TDATE" DATE,
+          	 CONSTRAINT "PK_TOURNAMENTS" PRIMARY KEY ("TNAME")
+            USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS
+            STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+            PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+            TABLESPACE "USERS"  ENABLE
+             ) SEGMENT CREATION IMMEDIATE
+            PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+            STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+            PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+            TABLESPACE "USERS" ");
+          executeQuery("
+            CREATE TABLE "TFREEMAN3"."PERFORMANCES"
+             (	"BNAME" VARCHAR2(80 BYTE),
+          	"TNAME" VARCHAR2(40 BYTE),
+          	"SCORE" NUMBER,
+          	 CONSTRAINT "PK_PERFORMANCES" PRIMARY KEY ("BNAME", "TNAME")
+            USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS
+            STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+            PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+            TABLESPACE "USERS"  ENABLE,
+          	 CONSTRAINT "FK_PERFORMANCESBNAME" FOREIGN KEY ("BNAME")
+          	  REFERENCES "TFREEMAN3"."BOWLERS" ("BNAME") ENABLE,
+          	 CONSTRAINT "FK_PERFORMANCESTNAME" FOREIGN KEY ("TNAME")
+          	  REFERENCES "TFREEMAN3"."TOURNAMENTS" ("TNAME") ENABLE
+             ) SEGMENT CREATION IMMEDIATE
+            PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+            STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+            PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+            TABLESPACE "USERS"");
        }
      }
 

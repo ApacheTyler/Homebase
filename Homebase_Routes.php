@@ -169,13 +169,13 @@ class HomebaseApi extends RestfulAPI_Abs
 
      protected function test_tables(){
        if ($this->method == 'POST'){
-          executeQuery('CREATE TABLE "TFREEMAN3"."BOWLERS"
+          executeQuery('CREATE TABLE "BOWLERS"
              (	"BNAME" VARCHAR2(40 BYTE),
           	"HANDED" VARCHAR2(5 BYTE),
           	"TEAM" VARCHAR2(40 BYTE),
           	"PHONE" VARCHAR2(13 BYTE),
-          	 CONSTRAINT "PK_BOWLERS" PRIMARY KEY ("BNAME") ENABLE,
-          	 CONSTRAINT "UK_PHONE" UNIQUE ("PHONE") ENABLE
+          	 CONSTRAINT "PK_BOWLERS" PRIMARY KEY ("BNAME"),
+          	 CONSTRAINT "UK_PHONE" UNIQUE ("PHONE")
              )
           ');
           executeQuery('  CREATE TABLE "TOURNAMENTS"
@@ -191,9 +191,9 @@ class HomebaseApi extends RestfulAPI_Abs
           	"SCORE" NUMBER,
           	 CONSTRAINT "PK_PERFORMANCES" PRIMARY KEY ("BNAME", "TNAME"),
           	 CONSTRAINT "FK_PERFORMANCESBNAME" FOREIGN KEY ("BNAME")
-          	  REFERENCES "BOWLERS" ("BNAME") ENABLE,
+          	  REFERENCES "BOWLERS" ("BNAME"),
           	 CONSTRAINT "FK_PERFORMANCESTNAME" FOREIGN KEY ("TNAME")
-          	  REFERENCES "TOURNAMENTS" ("TNAME") ENABLE
+          	  REFERENCES "TOURNAMENTS" ("TNAME")
              )
           ');
        }

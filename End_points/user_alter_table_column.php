@@ -31,9 +31,6 @@
     if($new_column_size){
       $edit_column_statement = $edit_column_statement . " ($new_column_size)";
     }
-    if($not_null){
-      $edit_column_statement = $edit_column_statement . " not null";
-    }
     return executeQuery($edit_column_statement);
   }
 

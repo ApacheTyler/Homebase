@@ -42,10 +42,10 @@
       $edit_column_statement = $edit_column_statement . " ($new_column_size)";
     }
     if($not_null){
-      $add_column_statement = $add_column_statement . " NOT NULL";
+      $edit_column_statement = $edit_column_statement . " NOT NULL";
     }
     if($unique){
-      $add_column_statement = $add_column_statement . " UNIQUE";
+      $edit_column_statement = $edit_column_statement . " UNIQUE";
     }
     return executeQuery($edit_column_statement);
   }

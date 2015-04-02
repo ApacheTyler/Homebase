@@ -22,9 +22,8 @@
   function user_alter_table_column_put($req){
     $table_name = array_key_exists('table-name', $req) ? $req['table-name'] : '';
     $column_name = array_key_exists('column-name', $req) ? $req['column-name'] : '';
-    $new_column_type = array_key_exists('new-column-type', $req) ? $req['column-type'] : '';
-    $new_column_size = array_key_exists('new-column-size', $req) ? $req['column-size'] : '';
-    $not_null = array_key_exists('not-null', $req) ? $req['column-size'] : '';
+    $new_column_type = array_key_exists('new-column-type', $req) ? $req['new-column-type'] : '';
+    $new_column_size = array_key_exists('new-column-size', $req) ? $req['new-column-size'] : '';
 
     $edit_column_statement = "ALTER TABLE $table_name
       MODIFY $column_name $new_column_type";

@@ -142,8 +142,8 @@ class HomebaseApi extends RestfulAPI_Abs
      }
 
      protected function user_alter_table_name(){
-       if($this-> == 'POST'){
-
+       if($this->method == 'POST'){
+          //TODO: Implement
        }
        else{
          return array('error' => self::REQUEST_NOT_SUPPORTED);

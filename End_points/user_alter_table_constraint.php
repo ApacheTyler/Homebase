@@ -91,7 +91,6 @@ if (get_magic_quotes_gpc()) {
   function _table_constraint_unique_keys($unq_key){
     $unique_key_statement = "";
     $keys = "";
-    print_r($unq_key);
     foreach($unq_key['cols'] as $col){
 			$keys = $keys . $col . ",";
 		}
@@ -110,7 +109,7 @@ if (get_magic_quotes_gpc()) {
 
   function _table_constraint_not_null_constraint($nn_cons){
     $not_null_constraint_statement = "";
-    $not_null_constraint_statement = " CONSTRAINT " . $nn_cons['constraintName'] . " CHECK (" . $nn_cons['columnName'] . "IS NOT NULL)
+    $not_null_constraint_statement = " CONSTRAINT " . $nn_cons['constraintName'] . " CHECK (" . $nn_cons['columnName'] . " IS NOT NULL)
     ";
     return $not_null_constraint_statement;
   }

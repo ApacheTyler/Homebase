@@ -72,11 +72,9 @@ if (get_magic_quotes_gpc()) {
 			if($key['deferrable']){
 				$deferrable = "DEFERRABLE INITIALLY DEFERRED";
 			}
-			$foreign_key_statement = $foreign_key_statement . " CONSTRAINT " . $key['constraintName'] . " FOREIGN KEY (" . $key['tableCol'] . ") REFERENCES " . $key['refTable'] . "(" . $key['refCol'] . ") " . $deferrable . ",
+			$foreign_key_statement = $foreign_key_statement . " CONSTRAINT " . $key['constraintName'] . " FOREIGN KEY (" . $key['tableCol'] . ") REFERENCES " . $key['refTable'] . "(" . $key['refCol'] . ") " . $deferrable . "
 			";
 		}
-		$foreign_key_statement = rtrim($foreign_key_statement, ",
-		");
 		return $foreign_key_statement;
 	}
 

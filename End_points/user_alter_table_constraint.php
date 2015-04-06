@@ -22,7 +22,9 @@ if (get_magic_quotes_gpc()) {
   **/
   function user_alter_table_constraint_post($req){
     $statement_to_execute = "";
-    $statement_to_execute = _get_constraint_statement($req);
+    $constraint = _get_constraint_statement($req);
+    $statement_to_execute = "ALTER TABLE " . $req['table-name'] . "
+    ADD " . $constraint;
     return executeQuery($statement_to_execute);
   }
 

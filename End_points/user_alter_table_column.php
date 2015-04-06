@@ -16,10 +16,10 @@
       $add_column_statement = $add_column_statement . " ($column_size)";
     }
     if($not_null){
-      $add_column_statement = $add_column_statement . " NOT NULL";
+      $add_column_statement = $add_column_statement . " NOT NULL ";
     }
     if($unique){
-      $add_column_statement = $add_column_statement . " UNIQUE";
+      $add_column_statement = $add_column_statement . " UNIQUE ";
     }
     return executeQuery($add_column_statement);
   }

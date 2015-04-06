@@ -23,7 +23,7 @@ if (get_magic_quotes_gpc()) {
   function user_alter_table_constraint_post($req){
     $statement_to_execute = "";
     $statement_to_execute = _get_constraint_statement($req);
-    return executeQuery($constraint);
+    return executeQuery($statement_to_execute);
   }
 
   /**
@@ -43,20 +43,21 @@ if (get_magic_quotes_gpc()) {
   function _get_constraint_statement($req){
     $statement_to_execute = "";
     $constraint = json_decode($req['cons'], true);
+    $constraint = strtolower($constraint);
     switch ($req['constraint-type']){
-      case "P":
+      case "p":
         $statement_to_execute = _table_constraint_primary_keys($constraint);
         break;
-      case "F":
+      case "f":
         $statement_to_execute = _table_constraint_foreign_keys($constraint);
         break;
-      case "U":
+      case "u":
         $statement_to_execute = _table_constraint_unique_keys($constraint);
         break;
-      case "C":
+      case "c":
         $statement_to_execute = _table_constraint_check_constraint($constraint);
         break;
-      case "N":
+      case "n":
         $statement_to_execute = _table_constraint_not_null_constraint($constraint);
         break;
     }

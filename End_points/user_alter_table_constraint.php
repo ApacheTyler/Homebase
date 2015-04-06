@@ -66,7 +66,6 @@ if (get_magic_quotes_gpc()) {
   }
 
   function _table_constraint_foreign_keys($foreign_key){
-    print_r($foreign_keys);
 		$foreign_key_statement = "";
 			$deferrable = "";
 			if($foreign_key['deferrable']){
@@ -92,6 +91,7 @@ if (get_magic_quotes_gpc()) {
   function _table_constraint_unique_keys($unq_key){
     $unique_key_statement = "";
     $keys = "";
+    print_r($unq_key);
     foreach($unq_key['cols'] as $col){
 			$keys = $keys . $col . ",";
 		}

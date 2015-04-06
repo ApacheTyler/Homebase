@@ -45,19 +45,19 @@ if (get_magic_quotes_gpc()) {
     $constraint = json_decode($req['cons'], true);
     switch ($req['constraint-type']){
       case "P":
-        $statement_to_execute = _primary_keys($constraint);
+        $statement_to_execute = _table_constraint_primary_keys($constraint);
         break;
       case "F":
-        $statement_to_execute = _foreign_keys($constraint);
+        $statement_to_execute = _table_constraint_foreign_keys($constraint);
         break;
       case "U":
-        $statement_to_execute = _unique_keys($constraint);
+        $statement_to_execute = _table_constraint_unique_keys($constraint);
         break;
       case "C":
-        $statement_to_execute = _check_constraint($constraint);
+        $statement_to_execute = _table_constraint_check_constraint($constraint);
         break;
       case "N":
-        $statement_to_execute = _not_null_constraint($constraint);
+        $statement_to_execute = _table_constraint_not_null_constraint($constraint);
         break;
     }
     return $statement_to_execute;
@@ -78,7 +78,7 @@ if (get_magic_quotes_gpc()) {
 		return $foreign_key_statement;
 	}
 
-  function _primary_keys($primary_keys){
+  function _table_constraint_primary_keys($primary_keys){
 		$primary_key_statement = "";
 		$keys = "";
 		foreach($primary_keys['cols'] as $col){
@@ -90,7 +90,7 @@ if (get_magic_quotes_gpc()) {
 		return $primary_key_statement;
 	}
 
-  function _unique_keys($unq_key){
+  function _table_constraint_unique_keys($unq_key){
     $unique_key_statement = "";
     $keys = "";
     foreach($unq_key['cols'] as $col){
@@ -102,14 +102,14 @@ if (get_magic_quotes_gpc()) {
     return $unique_key_statement;
   }
 
-  function _check_constraint($chk_cons){
+  function _table_constraint_check_constraint($chk_cons){
     $check_constraint_statement = "";
     $check_constraint_statement = " CONSTRAINT " . $chk_cons['constraintName'] . " CHECK (" . $chk_cons['checkCondition'] . ")
     ";
     return $check_constraint_statement;
   }
 
-  function _not_null_constraint($nn_cons){
+  function _table_constraint_not_null_constraint($nn_cons){
     $not_null_constraint_statement = "";
     $not_null_constraint_statement = " CONSTRAINT " . $nn_cons['constraintName'] . " CHECK (" . $nn_cons['columnName'] . "IS NOT NULL)
     ";

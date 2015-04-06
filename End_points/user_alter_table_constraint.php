@@ -63,7 +63,7 @@ if (get_magic_quotes_gpc()) {
     return $statement_to_execute;
   }
 
-  function _foreign_keys($foreign_keys){
+  function _table_constraint_foreign_keys($foreign_keys){
 		$foreign_key_statement = "";
 		foreach($foreign_keys as $key){
 			$deferrable = "";

@@ -7,6 +7,7 @@ require 'End_points/user_table_column.php';
 require 'End_points/user_schema.php';
 require 'End_points/user_alter_table_column.php';
 require 'End_points/user_alter_table_constraint.php';
+require 'End_points/user_alter_table_name.php';
 
 class HomebaseApi extends RestfulAPI_Abs
 {
@@ -136,6 +137,15 @@ class HomebaseApi extends RestfulAPI_Abs
          return user_alter_table_constraint_delete($_POST);
        }
        else {
+         return array('error' => self::REQUEST_NOT_SUPPORTED);
+       }
+     }
+
+     protected function user_alter_table_name(){
+       if($this-> == 'POST'){
+
+       }
+       else{
          return array('error' => self::REQUEST_NOT_SUPPORTED);
        }
      }

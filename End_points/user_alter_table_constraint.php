@@ -42,9 +42,8 @@ if (get_magic_quotes_gpc()) {
 
   function _get_constraint_statement($req){
     $statement_to_execute = "";
-    $constraint = json_decode($req, true);
-    $req['constraint-type'] = strtolower($req['constraint-type']);
-    switch ($req['constraint-type']){
+    $constraint = json_decode($req['cons'], true);
+    switch (strtolower($req['constraint-type'])){
       case "p":
         $statement_to_execute = _table_constraint_primary_keys($constraint);
         break;

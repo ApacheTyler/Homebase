@@ -4,7 +4,7 @@
     $table_name = $req['table-name'];
     $new_table_name = $req['new-table-name'];
     $rename_table_statement = "";
-    $rename_table_statement = "RENAME TABLE $table_name TO $new_table_name";
+    $rename_table_statement = "RENAME $table_name TO $new_table_name";
     return executeQuery($rename_table_statement);
   }
 

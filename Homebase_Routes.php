@@ -143,7 +143,7 @@ class HomebaseApi extends RestfulAPI_Abs
 
      protected function user_alter_table_name(){
        if($this->method == 'POST'){
-         user_alter_table_name_post($_POST);
+         return user_alter_table_name_post($_POST);
        }
        else{
          return array('error' => self::REQUEST_NOT_SUPPORTED);
@@ -152,7 +152,7 @@ class HomebaseApi extends RestfulAPI_Abs
 
      protected function user_alter_column_name(){
        if($this->method == 'POST'){
-         user_alter_column_name_post($_POST);
+         return user_alter_column_name_post($_POST);
        }
        else{
          return array('error' => self::REQUEST_NOT_SUPPORTED);
@@ -161,7 +161,7 @@ class HomebaseApi extends RestfulAPI_Abs
 
      protected function user_alter_constraint_name(){
        if($this->method == 'POST'){
-         user_alter_constraint_name_post($_POST);
+         return user_alter_constraint_name_post($_POST);
        }
        else{
          return array('error' => self::REQUEST_NOT_SUPPORTED);

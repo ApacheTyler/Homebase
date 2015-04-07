@@ -15,7 +15,7 @@
 
 	}
 
-	function _get_constraints_by_column_name($table_name){
+	function user_table_column_get_constraints_by_column_name($table_name){
 		$query = "SELECT cols.table_name, cols.column_name, cols.position, cons.status, cons.owner, cons.constraint_type, cons.constraint_name
 			FROM all_constraints cons, all_cons_columns cols
 			WHERE cols.table_name = '$table_name'

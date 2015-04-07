@@ -7,7 +7,7 @@ function user_alter_constraint_name_post($req){
   $rename_column_statement = "";
   $rename_column_statement = "ALTER TABLE $table_name
     RENAME CONSTRAINT $constraint_to_rename TO $new_constraint_name";
-  executeQuery($rename_column_statement);
+  return executeQuery($rename_column_statement);
 }
 
 ?>

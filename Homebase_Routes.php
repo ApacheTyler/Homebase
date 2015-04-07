@@ -8,6 +8,8 @@ require 'End_points/user_schema.php';
 require 'End_points/user_alter_table_column.php';
 require 'End_points/user_alter_table_constraint.php';
 require 'End_points/user_alter_table_name.php';
+require 'End_points/user_alter_column_name.php';
+require 'End_points/user_alter_constraint_name.php';
 
 class HomebaseApi extends RestfulAPI_Abs
 {

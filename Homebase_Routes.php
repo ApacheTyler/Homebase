@@ -10,6 +10,7 @@ require 'End_points/user_alter_table_constraint.php';
 require 'End_points/user_alter_table_name.php';
 require 'End_points/user_alter_column_name.php';
 require 'End_points/user_alter_constraint_name.php';
+require 'End_points/user_table_info.php';
 
 class HomebaseApi extends RestfulAPI_Abs
 {
@@ -164,6 +165,16 @@ class HomebaseApi extends RestfulAPI_Abs
      protected function user_alter_constraint_name(){
        if($this->method == 'POST'){
          return user_alter_constraint_name_post($_POST);
+       }
+       else{
+         return array('error' => self::REQUEST_NOT_SUPPORTED);
+       }
+     }
+
+     protected function user_table_info(){
+       if($this->method == 'POST'){
+         echo('end_point');
+         return user_table_info_post($_POST);
        }
        else{
          return array('error' => self::REQUEST_NOT_SUPPORTED);

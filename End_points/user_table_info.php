@@ -1,7 +1,7 @@
 <?php
 
 function user_table_info_post($req){
-  $table_name = $req['TABLE_NAME'];
+  $table_name = $req['table-name'];
   $table =array();
   $table['TABLE_COLS'] = user_table_column_get($table_name);
   $table['TABLE_PRIMARY_KEY'] = user_schema_get_table_primary_key($table_name);

@@ -14,7 +14,7 @@ function user_table_info_post($req){
 function get_table_constraints($table_name){
   return executeQuery("SELECT c.constraint_name, c.constraint_type, a.table_name, a.column_name,
                             r.table_name as reference_table, a.column_name as reference_column, c.deferrable,
-                            c.DEFERRED, c.DELETE_RULE, c.search_condition
+                            c.DEFERRED, c.DELETE_RULE, c.search_condition, c.status
                 FROM user_cons_columns a
                 JOIN user_constraints c ON a.owner = c.owner
                     AND a.constraint_name = c.constraint_name

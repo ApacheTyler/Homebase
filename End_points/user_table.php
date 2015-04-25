@@ -58,20 +58,6 @@ if (get_magic_quotes_gpc()) {
 																			]
 								},
 		"foreignKey":  [
-																{
-																		"constraintName": "fk_table_1_col_2",
-																		"tableCol": "col_2",
-																		"refTable": "test_table_3",
-																		"refCol": "col_1",
-																		"deferrable": false
-																},
-																{
-																		"constraintName": "fk_table_1_col_3",
-																		"tableCol": "col_3",
-																		"refTable": "test_table_6",
-																		"refCol": "col_1",
-																		"deferrable": true
-																}
 									]
     }';
 

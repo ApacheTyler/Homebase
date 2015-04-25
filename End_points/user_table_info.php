@@ -8,7 +8,7 @@ function user_table_info_post($req){
   $table['TABLE_FOREIGN_KEY'] = user_schema_get_table_foreign_key($table_name);
   $table['TABLE_TRIGGERS'] = user_schema_get_table_triggers($table_name);
   $table['TABLE_CONSTRAINTS'] = user_table_column_get_constraints_by_column_name($table_name);
-  return $table
+  return $table;
 }
 
 ?>

@@ -173,7 +173,6 @@ class HomebaseApi extends RestfulAPI_Abs
 
      protected function user_table_info(){
        if($this->method == 'POST'){
-         echo('end_point');
          return user_table_info_post($_POST);
        }
        else{

@@ -68,10 +68,25 @@ if (get_magic_quotes_gpc()) {
   function _table_constraint_foreign_keys($foreign_key){
 		$foreign_key_statement = "";
 			$deferrable = "";
+
+			/**Composite FK's**/
+			$keys = "";
+			foreach($foreign_key['tableCol'] as $col){
+				$keys = $keys . $col . ",";
+			}
+			$keys = rtrim($keys, ","); //Trim last comma
+
+			/**Composite Ref PK's**/
+			$ref_keys = "";
+			foreach($foreign_key['refCol'] as $col){
+				$ref_keys = $ref_keys . $col . ",";
+			}
+			$ref_keys = rtrim($ref_keys, ",");//Trim last comma
+
 			if($foreign_key['deferrable']){
 				$deferrable = "DEFERRABLE INITIALLY DEFERRED";
 			}
-			$foreign_key_statement = $foreign_key_statement . " CONSTRAINT " . $foreign_key['constraintName'] . " FOREIGN KEY (" . $foreign_key['tableCol'] . ") REFERENCES " . $foreign_key['refTable'] . "(" . $foreign_key['refCol'] . ") " . $deferrable . "
+			$foreign_key_statement = $foreign_key_statement . " CONSTRAINT " . $foreign_key['constraintName'] . " FOREIGN KEY (" . $keys . ") REFERENCES " . $foreign_key['refTable'] . "(" . $ref_keys . ") " . $deferrable . "
 			";
 		return $foreign_key_statement;
 	}

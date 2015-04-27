@@ -180,6 +180,16 @@ class HomebaseApi extends RestfulAPI_Abs
        }
      }
 
+     protected function validate_user(){
+      openDatabaseConnection();
+      $conn = $GLOBALS['oracle_connection'];
+   		if(!$conn){
+   			return array('error' => oci_error());
+   		} else {
+         return array('success' => true);
+       }
+     }
+
      /**
      * End point for obtaining structure of user schema
      **/

@@ -114,12 +114,14 @@ if (get_magic_quotes_gpc()) {
 	function _primary_keys($primary_keys){
 		$primary_key_statement = "";
 		$keys = "";
-		foreach($primary_keys['cols'] as $col){
-			$keys = $keys . $col . ",";
+		if(!empty($primary_keys)){
+			foreach($primary_keys['cols'] as $col){
+				$keys = $keys . $col . ",";
+			}
+			$keys = rtrim($keys, ",");
+			$primary_key_statement = "CONSTRAINT " . $primary_keys['constraintName'] . " PRIMARY KEY (" . $keys . "),
+			";
 		}
-		$keys = rtrim($keys, ",");
-		$primary_key_statement = "CONSTRAINT " . $primary_keys['constraintName'] . " PRIMARY KEY (" . $keys . "),
-		";
 		return $primary_key_statement;
 	}
 

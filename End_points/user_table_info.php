@@ -3,9 +3,10 @@
 function user_table_info_post($req){
   $table_name = $req['table-name'];
   $constraint_name = $req['constraint-name'];
-  $table =array();
+  $table = array();
   $array = get_table_constraints($table_name, $constraint_name);
-  $table['TABLE_CONSTRAINTS'] = array_length($array, count($array)/2);
+  $length = count($array)/2
+  $table['TABLE_CONSTRAINTS'] = array_length($array, $length);
   return $table;
 }
 

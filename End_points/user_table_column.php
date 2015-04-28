@@ -16,14 +16,16 @@
 	}
 
 	function user_table_column_get_constraints_by_column_name($table_name){
-		$query = "SELECT cols.table_name, cols.column_name, cols.position, cons.status,
-											cons.owner, cons.constraint_type, cons.search_condition, cons.constraint_name
-			FROM user_constraints cons, user_cons_columns cols
-			WHERE cols.table_name = '$table_name'
-			AND cons.constraint_name = cols.constraint_name
-			AND cons.owner = cols.owner
-			ORDER BY cols.table_name, cols.position";
+		$query = "SELECT c.constraint_name, c.constraint_type, a.table_name, a.column_name,
+	                            r.table_name as reference_table, a.column_name as reference_column, c.deferrable,
+	                            c.DEFERRED, c.DELETE_RULE, c.search_condition, c.status
+	                FROM user_cons_columns a
+	                JOIN user_constraints c ON a.owner = c.owner
+	                    AND a.constraint_name = c.constraint_name
+	                LEFT OUTER JOIN (SELECT table_name, constraint_name FROM user_constraints) r
+	                  ON r.constraint_name = c.r_constraint_name
+									WHERE a.table_name = '$table_name'";
 		return executeQuery($query);
 	}
-	
+
 ?>

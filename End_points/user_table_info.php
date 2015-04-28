@@ -3,9 +3,11 @@
 function user_table_info_post($req){
   $table_name = $req['table-name'];
   $constraint_name = $req['constraint-name'];
-  $table =array();
-  $table['TABLE_CONSTRAINTS'] = get_table_constraints($table_name, $constraint_name);
-  $table['TABLE_CONSTRAINTS'] = array_map("unserialize", array_unique(array_map("serialize", $table['TABLE_CONSTRAINTS'])));
+  $table = array();
+  $array = get_table_constraints($table_name, $constraint_name);
+  $array = array_unique($array, SORT_REGULAR);
+  $table['TABLE-CONSTRAINTS'] = $array
+
   return $table;
 }
 

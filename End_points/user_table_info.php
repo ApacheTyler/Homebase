@@ -6,7 +6,7 @@ function user_table_info_post($req){
   $table = array();
   $array = get_table_constraints($table_name, $constraint_name);
   $length = count($array)/2
-  $table['TABLE_CONSTRAINTS'] = array_length($array, $length);
+  $table['TABLE_CONSTRAINTS'] = array_slice($array, $length);
   return $table;
 }
 

@@ -18,7 +18,7 @@ function get_table_constraints($table_name, $constraint_name){
                 INNER JOIN (SELECT table_name, constraint_name, column_name FROM user_constraints NATURAL JOIN user_cons_columns) r
                   ON r.constraint_name = c.r_constraint_name
 								WHERE a.table_name = 'CHILD' AND c.constraint_name = 'FK_CHILD_COMP'
-                ORDER BY a.column_name;");
+                ORDER BY a.column_name");
 }
 
 ?>

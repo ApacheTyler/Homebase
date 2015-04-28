@@ -9,7 +9,7 @@ function user_table_info_post($req){
 
   $array = get_table_constraints($table_name, $constraint_name);
   $length = count($array)/2;
-  $table['TABLE_CONSTRAINTS'] = array_slice($array, $length);
+  $table['TABLE_CONSTRAINTS'] = array_slice($array, 0, $length);
   return $table;
 }
 

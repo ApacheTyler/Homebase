@@ -8,8 +8,16 @@ function user_table_info_post($req){
   $array = array();
 
   $array = get_table_constraints($table_name, $constraint_name);
-  $length = count($array)/2;
-  $table['TABLE_CONSTRAINTS'] = array_slice($array, 0, $length);
+
+  $result = array();
+  $i = 0;
+  foreach($array as $value) {
+      if ($i++ % 205 == 0) {
+          $result[] = $value;
+      }
+  }
+
+  $table['TABLE_CONSTRAINTS'] = $result;
   return $table;
 }
 

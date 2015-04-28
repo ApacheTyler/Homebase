@@ -2,9 +2,9 @@
 
 function user_table_info_post($req){
   $table_name = $req['table-name'];
-  $constraint_type = $req['constraint-name'];
+  $constraint_name = $req['constraint-name'];
   $table =array();
-  $table['TABLE_CONSTRAINTS'] = get_table_constraints($table_name, $constraint_type);
+  $table['TABLE_CONSTRAINTS'] = get_table_constraints($table_name, $constraint_name);
   return $table;
 }
 
@@ -17,7 +17,7 @@ function get_table_constraints($table_name, $constraint_type){
                     AND a.constraint_name = c.constraint_name
                 LEFT OUTER JOIN (SELECT table_name, constraint_name FROM user_constraints) r
                   ON r.constraint_name = c.r_constraint_name
-								WHERE a.table_name = '$table_name' AND c.constraint_name = '$constraint_type'");
+								WHERE a.table_name = '$table_name' AND c.constraint_name = '$constraint_name'");
 }
 
 ?>

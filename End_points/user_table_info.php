@@ -17,7 +17,7 @@ function get_table_constraints($table_name, $constraint_name){
                     AND a.constraint_name = c.constraint_name
                 LEFT OUTER JOIN (SELECT table_name, constraint_name FROM user_constraints) r
                   ON r.constraint_name = c.r_constraint_name
-								WHERE a.table_name = '$table_name' AND c.constraint_name = '$constraint_name';");
+								WHERE a.table_name = '$table_name' AND c.constraint_name = '$constraint_name'");
 }
 
 ?>

@@ -4,8 +4,8 @@ function user_table_info_post($req){
   $table_name = $req['table-name'];
   $constraint_name = $req['constraint-name'];
   $table =array();
-  $table['TABLE_CONSTRAINTS'] = get_table_constraints($table_name, $constraint_name);
-
+  $array = get_table_constraints($table_name, $constraint_name);
+  $table['TABLE_CONSTRAINTS'] = array_length($array, count($array)/2);
   return $table;
 }
 

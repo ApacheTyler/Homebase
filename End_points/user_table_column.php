@@ -25,5 +25,5 @@
 			ORDER BY cols.table_name, cols.position";
 		return executeQuery($query);
 	}
-	
+
 ?>
